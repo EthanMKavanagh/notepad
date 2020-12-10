@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
