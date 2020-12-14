@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HomeService } from '../services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  @Input() notes;
+  notes = null;
+  selectedNote = null;
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+    this.loadNotes();
+  }
+
+  loadNotes() {
+    this.notes = this.homeService.all()
+      .subscribe(notes => this.notes = notes);
   }
 
 }
