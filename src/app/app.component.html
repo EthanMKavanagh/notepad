@@ -7,12 +7,17 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <a routerLink="/home" class="menu-link">Home</a>
-      </button>
-      <button mat-menu-item>
-        <a routerLink="/notes" class="menu-link">New Note</a>
-      </button>
+      <nav>
+        <button mat-menu-item *ngFor="let link of links">
+          <a 
+            [routerLink]="link.path" 
+            routerLinkActive="active"
+            class="menu-link"
+          >
+            {{link.title}}
+          </a>
+        </button>
+      </nav>
     </mat-menu>
   </mat-toolbar>
 </p>

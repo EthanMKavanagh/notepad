@@ -1,0 +1,33 @@
+<form #form="ngForm" (submit)="saved(selectedNote)">
+    <h1>Title:</h1>
+    <input 
+        class="new-note-title"
+        type="text"
+        name="title"
+        required
+        [(ngModel)]="selectedNote.title"
+    />
+
+    <textarea
+        class="new-note-description"
+        type="text"
+        name="description"
+        required
+        [(ngModel)]="selectedNote.description"
+    ></textarea>
+
+    <button 
+        mat-button
+        type="submit"
+        color="primary"
+    >
+        Save
+    </button>
+    <!-- <button 
+        mat-button
+        type="button"
+        (click)="cancelled.emit()"
+    >
+        Cancel
+    </button> -->
+</form>

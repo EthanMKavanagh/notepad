@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'notebook';
+  links = [
+    { path: '/home', title: 'Home' },
+    { path: '/new', title: 'New Note'}
+  ]
 
   constructor() { }
 }

@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from '../services/home.service';
 
 @Component({
-  selector: 'app-new',
+  selector: 'app-courses',
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-  }
 
+  }
 }

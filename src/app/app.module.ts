@@ -14,12 +14,14 @@ import { HomeComponent } from './home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { NewComponent } from './new/new.component';
+import { NewNoteComponent } from './new/new-note/new.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NewComponent
+    NewComponent,
+    NewNoteComponent
   ],
   imports: [
     BrowserModule,
