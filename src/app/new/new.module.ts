@@ -1,14 +1,32 @@
+import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
+import { HomeService } from '../services/home.service';
+import { HttpInterceptorService } from '../services/http-interceptor.service';
+import { NewNoteComponent } from './new-note/new-note.component';
+import { NewRoutingModule } from './new-routing.module';
 import { NewComponent } from './new.component';
 
-const routes: Routes = [
-  { path: '', component: NewComponent }
-];
-
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    CommonModule,
+    NewRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  declarations: [
+    NewComponent,
+    NewNoteComponent
+  ],
+  providers: [
+    HomeService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    }
+  ]
 })
-export class NewRoutingModule { }
+export class CoursesModule { }

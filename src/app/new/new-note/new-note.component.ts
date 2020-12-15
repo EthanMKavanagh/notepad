@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrls: ['./new.component.scss']
+  templateUrl: './new-note.component.html',
+  styleUrls: ['./new-note.component.scss']
 })
 export class NewNoteComponent {
   selectedNote = null;

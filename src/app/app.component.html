@@ -9,7 +9,7 @@
     <mat-menu #menu="matMenu">
       <nav>
         <button mat-menu-item *ngFor="let link of links">
-          <a 
+          <a
             [routerLink]="link.path" 
             routerLinkActive="active"
             class="menu-link"
