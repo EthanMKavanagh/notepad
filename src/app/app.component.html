@@ -8,12 +8,14 @@
     </button>
     <mat-menu #menu="matMenu">
       <nav>
-        <button mat-menu-item *ngFor="let link of links">
-          <a
-            [routerLink]="link.path" 
-            routerLinkActive="active"
-            class="menu-link"
-          >
+        <button
+          mat-menu-item
+          *ngFor="let link of links"
+          [routerLink]="link.path" 
+          routerLinkActive="active"
+          class="menu-link"
+        >
+          <a>
             {{link.title}}
           </a>
         </button>
