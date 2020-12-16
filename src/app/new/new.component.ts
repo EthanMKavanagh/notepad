@@ -20,15 +20,15 @@ export class NewComponent implements OnInit {
     this.resetNotes();
   }
 
-  // loadNotes() {
-  //   this.notes = this.noteService.all()
-  //     .subscribe(notes => this.notes = notes);
-  // }
+  loadNotes() {
+    this.notes = this.noteService.all()
+      .subscribe(notes => this.notes = notes);
+  }
 
-  // refreshNotes() {
-  //   this.resetNotes();
-  //   this.loadNotes();
-  // }
+  refreshNotes() {
+    this.resetNotes();
+    this.loadNotes();
+  }
 
   resetNotes() {
     const emptyNote = {
@@ -41,11 +41,9 @@ export class NewComponent implements OnInit {
 
   saveNote(note) {
     if(note.id) {
-      this.noteService.update(note)
-        .subscribe(result => this.refreshNotes());
+      this.noteService.update(note);
     } else {
-      this.noteService.create(note)
-        .subscribe(result => this.refreshNotes());
+      this.noteService.create(note);
     }
   }
 }

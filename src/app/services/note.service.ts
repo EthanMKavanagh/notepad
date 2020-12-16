@@ -15,7 +15,27 @@ export class NoteService {
     return this.http.get(this.getUrl());
   }
 
+  create(note) {
+    return this.http.post(this.getUrl(), note);
+  }
+
+  delete(note) {
+    return this.http.delete(`${this.getUrlById(note.id)}`, note);
+  }
+
+  find(note) {
+    return this.http.get(this.getUrlById(note.id));
+  }
+
+  update(note) {
+    return this.http.put(`${this.getUrlById(note.id)}`, note);
+  }
+
   private getUrl() {
     return `${BASE_URL}${this.model}`;
+  }
+
+  private getUrlById(id) {
+    return `${this.getUrl()}/${id}`;
   }
 }

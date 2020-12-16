@@ -27,6 +27,8 @@
             <button
                 mat-button
                 type="button"
+                routerLink="/home" 
+                routerLinkActive="active"
                 (click)="cancelled.emit()"
             >
                 Cancel
@@ -36,6 +38,8 @@
                 [disabled]="form.invalid"
                 type="submit"
                 color="primary"
+                routerLink="/home" 
+                routerLinkActive="active"
             >
                 Save
             </button>
