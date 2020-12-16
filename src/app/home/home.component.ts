@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../services/home.service';
+import { NoteService } from '../services/note.service';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +10,14 @@ export class HomeComponent implements OnInit {
   notes = null;
   selectedNote = null;
 
-  constructor(private homeService: HomeService) { }
+  constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {
     this.loadNotes();
   }
 
   loadNotes() {
-    this.notes = this.homeService.all()
+    this.notes = this.noteService.all()
       .subscribe(notes => this.notes = notes);
   }
 

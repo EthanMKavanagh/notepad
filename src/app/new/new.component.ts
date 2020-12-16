@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../services/home.service';
+import { NoteService } from '../services/note.service';
 
 @Component({
   selector: 'app-new',
@@ -7,10 +7,45 @@ import { HomeService } from '../services/home.service';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
+  newNote = null;
+  notes = null;
 
-  constructor(private homeService: HomeService) { }
+  constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {
 
+  }
+
+  cancel() {
+    this.resetNotes();
+  }
+
+  // loadNotes() {
+  //   this.notes = this.noteService.all()
+  //     .subscribe(notes => this.notes = notes);
+  // }
+
+  // refreshNotes() {
+  //   this.resetNotes();
+  //   this.loadNotes();
+  // }
+
+  resetNotes() {
+    const emptyNote = {
+      id: null,
+      title: '',
+      description: ''
+    }
+    this.newNote = emptyNote;
+  }
+
+  saveNote(note) {
+    if(note.id) {
+      this.noteService.update(note)
+        .subscribe(result => this.refreshNotes());
+    } else {
+      this.noteService.create(note)
+        .subscribe(result => this.refreshNotes());
+    }
   }
 }

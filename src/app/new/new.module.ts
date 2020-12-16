@@ -3,7 +3,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { HomeService } from '../services/home.service';
+import { MaterialModule } from '../material.module';
+import { NoteService } from '../services/note.service';
 import { HttpInterceptorService } from '../services/http-interceptor.service';
 import { NewNoteComponent } from './new-note/new-note.component';
 import { NewRoutingModule } from './new-routing.module';
@@ -11,6 +12,7 @@ import { NewComponent } from './new.component';
 
 @NgModule({
   imports: [
+    MaterialModule,
     CommonModule,
     NewRoutingModule,
     FormsModule,
@@ -21,7 +23,7 @@ import { NewComponent } from './new.component';
     NewNoteComponent
   ],
   providers: [
-    HomeService,
+    NoteService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,

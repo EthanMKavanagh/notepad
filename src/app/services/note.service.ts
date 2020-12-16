@@ -6,7 +6,7 @@ const BASE_URL = 'http://localhost:3000/';
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class NoteService {
   private model = 'notes';
 
   constructor(private http: HttpClient) { }

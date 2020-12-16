@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { NewComponent } from './new/new.component';
 import { NewNoteComponent } from './new/new-note/new-note.component';
 
-import { HomeService } from './services/home.service';
+import { NoteService } from './services/note.service';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { HomeService } from './services/home.service';
     HttpClientModule
   ],
   providers: [
-    HomeService
+    NoteService
   ],
   bootstrap: [AppComponent]
 })

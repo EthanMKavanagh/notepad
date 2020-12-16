@@ -1,33 +1,44 @@
-<form #form="ngForm" (submit)="saved(selectedNote)">
-    <h1>Title:</h1>
-    <input 
-        class="new-note-title"
-        type="text"
-        name="title"
-        required
-        [(ngModel)]="selectedNote.title"
-    />
+<mat-card>
+    <form #form="ngForm" (submit)="saved.emit(newNote)">
+        <mat-card-content>
+            <mat-form-field>
+                <label for="title">Title:</label>
+                <input
+                    id="title"
+                    class="new-note-title"
+                    type="text"
+                    name="title"
+                    required
+                    [(ngModel)]="newNote.title"
+                />
+            </mat-form-field>
 
-    <textarea
-        class="new-note-description"
-        type="text"
-        name="description"
-        required
-        [(ngModel)]="selectedNote.description"
-    ></textarea>
+            <mat-form-field>
+                <textarea
+                    class="new-note-description"
+                    type="text"
+                    name="description"
+                    [(ngModel)]="newNote.description"
+                ></textarea>
+            </mat-form-field>
+        </mat-card-content>
 
-    <button 
-        mat-button
-        type="submit"
-        color="primary"
-    >
-        Save
-    </button>
-    <!-- <button 
-        mat-button
-        type="button"
-        (click)="cancelled.emit()"
-    >
-        Cancel
-    </button> -->
-</form>
+        <mat-card-actions>
+            <button
+                mat-button
+                type="button"
+                (click)="cancelled.emit()"
+            >
+                Cancel
+            </button>
+            <button 
+                mat-button
+                [disabled]="form.invalid"
+                type="submit"
+                color="primary"
+            >
+                Save
+            </button>
+        </mat-card-actions>
+    </form>
+</mat-card>
