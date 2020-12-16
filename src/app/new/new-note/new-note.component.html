@@ -1,24 +1,37 @@
 <mat-card>
-    <form #form="ngForm" (submit)="saved.emit(newNote)">
+    <form #form="ngForm" (submit)="saved.emit(selectedNote)">
         <mat-card-content>
             <mat-form-field>
-                <label for="title">Title:</label>
+
+                
+
+                <mat-form-field appearance="standard">
+                    <mat-label>Standard form field</mat-label>
+                    <input matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                  </mat-form-field>
+
+
+
+                <h2>Title:</h2>
                 <input
-                    id="title"
+                    mat-input
                     class="new-note-title"
                     type="text"
                     name="title"
                     required
-                    [(ngModel)]="newNote.title"
+                    [(ngModel)]="selectedNote.title"
                 />
             </mat-form-field>
 
             <mat-form-field>
                 <textarea
+                    mat-input
                     class="new-note-description"
                     type="text"
                     name="description"
-                    [(ngModel)]="newNote.description"
+                    [(ngModel)]="selectedNote.description"
                 ></textarea>
             </mat-form-field>
         </mat-card-content>
@@ -27,8 +40,6 @@
             <button
                 mat-button
                 type="button"
-                routerLink="/home" 
-                routerLinkActive="active"
                 (click)="cancelled.emit()"
             >
                 Cancel
@@ -38,8 +49,6 @@
                 [disabled]="form.invalid"
                 type="submit"
                 color="primary"
-                routerLink="/home" 
-                routerLinkActive="active"
             >
                 Save
             </button>

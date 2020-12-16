@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NoteService } from '../services/note.service';
 
 @Component({
@@ -7,27 +8,23 @@ import { NoteService } from '../services/note.service';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
-  newNote = null;
+  selectedNote = {
+    id: null,
+    title: '',
+    description: ''
+  };
   notes = null;
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, private router: Router) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   cancel() {
     this.resetNotes();
   }
 
-  loadNotes() {
-    this.notes = this.noteService.all()
-      .subscribe(notes => this.notes = notes);
-  }
-
   refreshNotes() {
     this.resetNotes();
-    this.loadNotes();
   }
 
   resetNotes() {
@@ -36,14 +33,16 @@ export class NewComponent implements OnInit {
       title: '',
       description: ''
     }
-    this.newNote = emptyNote;
+    this.selectedNote = emptyNote;
   }
 
   saveNote(note) {
     if(note.id) {
-      this.noteService.update(note);
+      this.noteService.update(note)
+        .subscribe(result => this.router.navigateByUrl('/home'))
     } else {
-      this.noteService.create(note);
+      this.noteService.create(note)
+        .subscribe(result => this.router.navigateByUrl('/home'))
     }
   }
 }

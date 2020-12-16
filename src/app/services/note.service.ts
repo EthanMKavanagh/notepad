@@ -7,7 +7,7 @@ const BASE_URL = 'http://localhost:3000/';
   providedIn: 'root'
 })
 export class NoteService {
-  private model = 'notes';
+  private model = 'new';
 
   constructor(private http: HttpClient) { }
 

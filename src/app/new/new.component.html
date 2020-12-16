@@ -1,4 +1,7 @@
 <div>
     <app-new-note
+        [note]="selectedNote"
+        (saved)="saveNote($event)"
+        (cancelled)="cancel()"
     ></app-new-note>
 </div>

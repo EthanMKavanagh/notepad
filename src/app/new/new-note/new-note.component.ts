@@ -6,14 +6,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./new-note.component.scss']
 })
 export class NewNoteComponent {
-  newNote;
+  selectedNote;
 
   @Output() saved = new EventEmitter();
   @Output() cancelled = new EventEmitter();
 
   @Input() set note(value) {
     if (value) {
-      this.newNote = Object.assign({}, value);
+      this.selectedNote = Object.assign({}, value);
     }
   }
 }
